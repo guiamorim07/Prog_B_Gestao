@@ -5,6 +5,8 @@ import produtosRoutes from "./modules/Produtos/produtos.routes.js";
 
 const app : Express = express();
 
+
+app.use(express.json());
 app.use("/Produtos", produtosRoutes);
 
 app.get('/', (req : Request, res : Response) => {
