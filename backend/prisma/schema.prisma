@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+enum StatusAssinante {
+  ATIVA
+  CANCELADA
+}
+
+
+model Usuario {
+  id           Int      @id @default(autoincrement())
+  nome         String
+  email        String   @unique
+  senhaHash    String
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model Produto {
+  id           Int        @id @default(autoincrement())
+  nome         String
+  descricao    String?
+  categoria    String
+  ativo        Boolean    @default(true)
+  criadoEm     DateTime   @default(now())
+  atualizadoEm DateTime   @updatedAt
+  variacoes    Variacao[]
+}
+
+model Variacao {
+  id                Int      @id @default(autoincrement())
+  produtoId         Int
+  produto           Produto  @relation(fields: [produtoId], references: [id])
+  sku               String   @unique
+  tamanho           String
+  cor               String
+  preco             Decimal
+  quantidadeEstoque Int      @default(0)
+  estoqueMinimo     Int
+  ativo             Boolean  @default(true)
+  criadoEm          DateTime @default(now())
+  atualizadoEm      DateTime @updatedAt
+}
+
+model Assinantes {
+  id           Int             @id @default(autoincrement())
+  nome         String
+  email        String?
+  telefone     String?
+  status       StatusAssinante
+  dataInicio   DateTime        @db.Date
+  dataFim      DateTime?       @db.Date
+  criadoEm     DateTime        @default(now())
+  atualizadoEm DateTime        @updatedAt
+}
+
+model Contas {
+  id             Int       @id @default(autoincrement())
+  descricao      String
+  valor          Decimal
+  dataVencimento DateTime  @db.Date
+  dataPagamento  DateTime? @db.Date
+  criadoEm       DateTime  @default(now())
+  atualizadoEm   DateTime  @updatedAt
+}
