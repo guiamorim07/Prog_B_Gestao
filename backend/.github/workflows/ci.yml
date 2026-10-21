@@ -12,6 +12,7 @@ jobs:
       - run: npm ci
       - run: npx prisma -v
       - run: npx prisma generate
+      - run: npm run lint
+      
         env:
           DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
-          
