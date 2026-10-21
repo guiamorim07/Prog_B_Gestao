@@ -17,11 +17,12 @@ jobs:
           node-version: 24
           cache: npm
           cache-dependency-path: backend/package-lock.json
+
+        env:
+          DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
       - run: npm ci
       - run: npx prisma -v
       - run: npx prisma generate
-        env:
-          DATABASE_URL: "postgresql://user:pass@localhost:5432/db"
       - run: npm run lint
       - run: npx tsc --noEmit
       - run: npm test
