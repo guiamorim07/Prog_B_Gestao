@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import * as service from "./produtos.service.js";
-import * as repository from "./produtos.repository.js";
+
 import type { CriarProdutoDados } from "./produtos.repository.js";
 
 
