@@ -22,7 +22,6 @@ jobs:
       - run: npm ci
       - run: npx prisma -v
       - run: npx prisma generate
-      - run: ls -R src/generated
       - run: npm run lint
       - run: npx tsc --noEmit
       - run: npm test
