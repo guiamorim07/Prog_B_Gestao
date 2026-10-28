@@ -11,7 +11,7 @@ export async function criarProduto(req: Request, res: Response) {
         return res.status(400).json({ error: "Nome e categoria são obrigatórios" });
     }
 
-    const produto = await service.criar({nome, categoria, descricao});
+    const produto = await repository.criar({nome, categoria, descricao});
 
     return res.status(201).json(produto);
 }
