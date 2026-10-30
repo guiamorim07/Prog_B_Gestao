@@ -6,9 +6,10 @@ const router = Router();
 
 router.post("/", controller.criarProduto);
 router.get("/", controller.listarProdutos);
-router.delete("/:id", controller.deletarProduto); 
+router.get("/:id", controller.buscarProduto); 
 router.patch("/:id", controller.atualizarParcial);
 router.put("/:id", controller.atualizarTotal);
+router.delete("/:id", controller.deletarProduto);
 
 
 export default router;

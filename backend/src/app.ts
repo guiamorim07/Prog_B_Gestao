@@ -7,15 +7,15 @@ const app : Express = express();
 
 
 app.use(express.json());
-app.use("/Produtos", produtosRoutes);
+app.use("/produtos", produtosRoutes);
 
-app.get('/', (req : Request, res : Response) => {
+app.get('/', (_req : Request, res : Response) => {
   res.send('working');
 });
 
 
 // Rota temporaria de teste 
-app.get('/health', (req : Request, res : Response) => {
+app.get('/health', (_req : Request, res : Response) => {
   res.json({ status: 'ok' });
 });
 
