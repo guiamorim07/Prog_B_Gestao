@@ -1,5 +1,9 @@
-import app from "./app.js"
+import "dotenv/config";
+import app from "./app.js";
+import { loadConfig } from "./config.js";
 
-app.listen(3000, () => {
-  console.log('Server is running');
+const config = loadConfig();
+
+app.listen(config.port, () => {
+  console.log(`Servidor rodando em http://localhost:${config.port}`);
 });

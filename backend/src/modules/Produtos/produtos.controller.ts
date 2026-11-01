@@ -2,6 +2,39 @@ import type { Request, Response } from "express";
 import * as repository from "./produtos.repository.js";
 import type { CriarProdutoDados, AtualizarProdutoDados} from "./produtos.repository.js";
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Produto:
+ *       type: object
+ *       required: [nome, categoria]
+ *       properties:
+ *         id:
+ *           type: integer
+ *           description: Gerado automaticamente
+ *         nome:
+ *           type: string
+ *         categoria:
+ *           type: string
+ *         descricao:
+ *           type: string
+ *           nullable: true
+ *         ativo:
+ *           type: boolean
+ *         criadoEm:
+ *           type: string
+ *           format: date-time
+ *         atualizadoEm:
+ *           type: string
+ *           format: date-time
+ *       example:
+ *         nome: "Camiseta"
+ *         categoria: "Roupas"
+ *         descricao: "Camiseta de algodão"
+ */
+
+
 function parseId(valor: unknown): number | null {
   const id = Number(valor);
   return Number.isInteger(id) && id > 0 ? id : null;
