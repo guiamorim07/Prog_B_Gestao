@@ -21,6 +21,19 @@ export function buscarPorId(id: number) {
 }
 
 
+export interface FiltrosProduto {
+  pagina: number;
+  limite: number;
+  categoria?: string;
+  busca?: string;
+  ativo?: boolean;
+}
+
+
+
+
+
+
 
 // POST - Criar
 export async function criar( dados : CriarProdutoDados ) {
@@ -30,13 +43,7 @@ export async function criar( dados : CriarProdutoDados ) {
 
 // GET - Listar
 
-export interface FiltrosProduto {
-  pagina: number;
-  limite: number;
-  categoria?: string;
-  busca?: string;
-  ativo?: boolean;
-}
+
 
 export async function listar(filtros: FiltrosProduto) {
   const { pagina, limite, categoria, busca, ativo } = filtros;

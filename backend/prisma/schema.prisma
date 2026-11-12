@@ -70,7 +70,8 @@ model Assinantes {
 model Contas {
   id             Int       @id @default(autoincrement())
   descricao      String
-  valor          Decimal
+  valor          Decimal   
+  ativo          Boolean   
   dataVencimento DateTime  @db.Date
   dataPagamento  DateTime? @db.Date
   criadoEm       DateTime  @default(now())
