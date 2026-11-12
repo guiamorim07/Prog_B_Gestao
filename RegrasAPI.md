@@ -13,3 +13,4 @@ Documentação do contrato da API do aplicativo de gestão da loja de roupas, se
 | Buscar um | `GET /produtos/{id}` | `id` na URL | `200` + produto. Erro `404` se não existir |
 | Atualizar | `PATCH /produtos/{id}` | `id` na URL + corpo com os campos a alterar (todos opcionais) | `200` + produto atualizado. Erros `400` e `404` |
 | Remover | `DELETE /produtos/{id}` | `id` na URL | `204` sem corpo. Erro `404` se não existir |
+| Substituir | `PUT /produtos/{id}` | `id` na URL + corpo: `nome`, `categoria`, `descricao` (opcional) | `200` + produto atualizado. Erros `400` e `404` |
