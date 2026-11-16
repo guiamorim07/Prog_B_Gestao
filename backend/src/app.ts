@@ -7,6 +7,7 @@ import { errorHandler } from "./errors/errorHandler.js";
 import produtosRoutes from "./modules/Produtos/produtos.routes.js";
 import usuariosRoutes from "./modules/usuarios/usuarios.routes.js";
 import authRoutes from "./modules/auth/auth.routes.js";
+import contasRouter from "./modules/Contas/contas.routes.js";
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.get("/health", (_req: Request, res: Response) => {
 app.use("/produtos", produtosRoutes);
 app.use("/usuarios", usuariosRoutes);
 app.use("/login", authRoutes);
-
+app.use("/contas", contasRouter);
 // Rota inexistente (sempre antes do errorHandler)
 app.use((_req: Request, _res: Response, next: NextFunction) => {
   next(new AppError("A rota solicitada não existe.", 404, "ROUTE_NOT_FOUND"));
